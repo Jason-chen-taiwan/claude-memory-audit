@@ -17,7 +17,6 @@ In a Claude Code session:
 /plugin install memory-audit@claude-memory-audit
 ```
 
-Or in one line: `/plugin install memory-audit --marketplace Jason-chen-taiwan/claude-memory-audit` (answer `y` to add the marketplace, then pick a scope).
 
 ## Use
 
