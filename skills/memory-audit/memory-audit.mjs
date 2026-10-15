@@ -38,6 +38,7 @@ const DEFAULTS = {
   },
   citePaths: ['CLAUDE.md', '.claude', 'docs', 'scripts'], // where a slug counts as "still referenced"
   gatePrefixes: ['lint', 'verify', 'audit', 'check', 'test'], // package.json scripts that count as machine checks
+  gates: [], // any-language checks, e.g. ["pytest", "ruff check", "make lint"]; matched when a memory names one in backticks
   archivePattern: '(-launch|-roadmap|roadmap-|-status)', // project-type slugs that are history logs
   staleDays: 90,
   archiveDays: 60,
@@ -183,7 +184,10 @@ const rows = memFiles.map((f) => {
     ...(body.match(/npm run ([\w:-]+)/g) || []).map((m) => m.slice(8)),
     ...(body.match(/(check-[\w-]+\.(?:mjs|cjs|js|sh|py))/g) || []),
   ];
-  const supersededBy = [...new Set(mentioned.filter((m) => scriptNames.has(m) || scriptFiles.has(m)))];
+  const supersededBy = [...new Set([
+    ...mentioned.filter((m) => scriptNames.has(m) || scriptFiles.has(m)),
+    ...cfg.gates.filter((g) => body.includes('`' + g + '`')),
+  ])];
 
   const typeWeight = type === 'user' || type === 'feedback' ? 2 : type === 'reference' ? 1 : 0;
   const recency = ageDays <= 30 ? 3 : ageDays <= 90 ? 2 : ageDays <= 180 ? 1 : 0;
