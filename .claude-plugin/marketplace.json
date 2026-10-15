@@ -1,0 +1,14 @@
+{
+  "name": "claude-memory-audit",
+  "description": "Context and memory hygiene for Claude Code.",
+  "owner": {
+    "name": "Jason-chen-taiwan"
+  },
+  "plugins": [
+    {
+      "name": "memory-audit",
+      "source": "./",
+      "description": "Three-layer context hygiene and a lifecycle audit for Claude Code auto-memory."
+    }
+  ]
+}

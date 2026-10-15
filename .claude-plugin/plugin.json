@@ -1,0 +1,10 @@
+{
+  "name": "memory-audit",
+  "version": "0.1.0",
+  "description": "Keep CLAUDE.md and auto-memory lean: a three-layer split, a SessionStart budget check that is silent unless over budget, and a lifecycle audit for memories (stale, superseded, overlap, unsourced values).",
+  "author": { "name": "Jason-chen-taiwan" },
+  "homepage": "https://github.com/Jason-chen-taiwan/claude-memory-audit",
+  "repository": "https://github.com/Jason-chen-taiwan/claude-memory-audit",
+  "license": "MIT",
+  "keywords": ["memory", "claude-md", "context", "audit"]
+}

@@ -1,0 +1,3 @@
+reports/
+.claude/memory-audit-*.md
+node_modules/
